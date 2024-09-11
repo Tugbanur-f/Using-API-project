@@ -10,6 +10,11 @@ This is a responsive, single-page web application that allows users to search fo
 - Error handling when the API request fails or no results are found.
 - Users can search for different news topics (based on keywords).
 
-## Nice-to-have Features
+## Should-Have Features
+- Allow users to filter news articles by category (e.g., Sports, Technology, Politics).
+
+## Could-Have Features
+- Users can click on articles to view detailed news on a separate page.
+
 
 
