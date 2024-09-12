@@ -1,4 +1,4 @@
-import { createNewsPage } from './pages.js';
+import { createNewsPage } from './pages/newsPage.js';
 
 window.addEventListener('DOMContentLoaded', () => {
     createNewsPage();
