@@ -4,19 +4,19 @@ import {
   createLoadingIndicator,
   createNewsContainer,
   createNewsItem,
-  createSearchBar,
 } from '../views/newsView.js';
+import { createSearchBar } from '../views/searchView.js';
 
  const fetchNews = async (query) => {
     const url = `${BASE_URL}?q=${query}&apiKey=${API_KEY}`;
     const loadingIndicator = document.getElementById('loading');
     const errorContainer = document.getElementById('error');
     const newsContainer = document.getElementById('newsContainer');
-
+   
     loadingIndicator.style.display = 'block';
     errorContainer.innerHTML = '';
     newsContainer.innerHTML = ''; 
-
+    
     try {
        const response = await fetch(url);
        if(!response.ok) {
