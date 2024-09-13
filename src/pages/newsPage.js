@@ -1,6 +1,11 @@
-import { createSearchBar, createLoadingIndicator, createErrorContainer, createNewsContainer } from './views/newsView.js';
-import { createNewsItem } from './views/newsView.js';
-import { API_KEY, BASE_URL } from './constants.js';
+import { API_KEY, BASE_URL } from '../constants.js';
+import {
+  createErrorContainer,
+  createLoadingIndicator,
+  createNewsContainer,
+  createNewsItem,
+  createSearchBar,
+} from '../views/newsView.js';
 
  const fetchNews = async (query) => {
     const url = `${BASE_URL}?q=${query}&apiKey=${API_KEY}`;
