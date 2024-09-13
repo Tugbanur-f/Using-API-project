@@ -17,8 +17,9 @@ h1 {
 .search-bar {
     margin: 20px;
     padding: 20px;
-   
+    text-align: center;
 }
+
 
 .search-input {
     padding: 10px;
@@ -52,6 +53,7 @@ h1 {
     position: fixed;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 8px;
   }
   
@@ -70,10 +72,24 @@ h1 {
 }
 
 .news-item {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     padding: 10px;
-    border: 1px solid #007BFF;
-    margin-bottom: 10px;
-    border-radius: 4px;
+}
+
+
+.news-image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover; 
+    margin-right: 20px;
+}
+
+.news-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .news-item h3 {
