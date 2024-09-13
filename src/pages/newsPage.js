@@ -1,22 +1,24 @@
 import { API_KEY, BASE_URL } from '../constants.js';
 import {
-  createErrorContainer,
-  createLoadingIndicator,
   createNewsContainer,
   createNewsItem,
-  createSearchBar,
 } from '../views/newsView.js';
+import { createSearchBar } from '../views/searchView.js';
+import { createErrorContainer } from '../views/errorView.js';
+import { createLoadingIndicator } from '../views/loadingView.js';
 
  const fetchNews = async (query) => {
     const url = `${BASE_URL}?q=${query}&apiKey=${API_KEY}`;
     const loadingIndicator = document.getElementById('loading');
     const errorContainer = document.getElementById('error');
     const newsContainer = document.getElementById('newsContainer');
-
+   
     loadingIndicator.style.display = 'block';
     errorContainer.innerHTML = '';
     newsContainer.innerHTML = ''; 
 
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
     try {
        const response = await fetch(url);
        if(!response.ok) {
