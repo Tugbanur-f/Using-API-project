@@ -9,6 +9,8 @@ import { createLoadingIndicator } from '../views/loadingView.js';
 
  const fetchNews = async (query) => {
     const url = `${BASE_URL}?q=${query}&apiKey=${API_KEY}`;
+
+
     const loadingIndicator = document.getElementById('loading');
     const errorContainer = document.getElementById('error');
     const newsContainer = document.getElementById('newsContainer');
@@ -26,10 +28,12 @@ import { createLoadingIndicator } from '../views/loadingView.js';
        } 
        const data = await response.json();
 
-       if (data.articles.length === 0) {
+       const filteredArticles = data.articles.filter(article => !article.title.toLowerCase().includes('removed'));
+
+       if (filteredArticles.length === 0) {
         errorContainer.innerText = 'No results found.';
        } else {
-        data.articles.forEach(article => {
+        filteredArticles.forEach(article => {
             const newsItem = createNewsItem(article);
             newsContainer.appendChild(newsItem);
         });

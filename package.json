@@ -1,0 +1,13 @@
+{
+  "name": "using-api-project",
+  "version": "1.0.0",
+  "description": "This is a responsive, single-page web application that allows users to search for the latest news articles using the [NewsAPI]. The app dynamically updates the page with search results and handles errors or loading states appropriately.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
