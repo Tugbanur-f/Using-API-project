@@ -17,20 +17,8 @@ export const createNewsItem = (article) => {
         return newsItem;
 }
 
-export const createLoadingIndicator = () => {
-    const loadingDiv = document.createElement('div');
-    loadingDiv.classList.add('loading');
-    loadingDiv.id = 'loading';
-    loadingDiv.innerText = 'Loading...';
-    return loadingDiv;
-}
 
-export const createErrorContainer = () => {
-    const errorDiv = document.createElement('div');
-    errorDiv.classList.add('error');
-    errorDiv.id = 'error';
-    return errorDiv;
-}
+
 
 
 

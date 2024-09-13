@@ -11,6 +11,10 @@ export const createSearchBar = (onSearch) => {
 
      button.addEventListener('click', () => onSearch(input.value));
      
+     setTimeout(() => {
+        input.focus();
+      }, 0);
+     
      input.addEventListener('keyup', (event) => {
        if(event.key === "Enter") {
         button.click();
