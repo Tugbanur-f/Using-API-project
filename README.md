@@ -4,14 +4,12 @@ This is a responsive, single-page web application that allows users to search fo
 
 ## Must-Have Features
 - Responsive design for both mobile and desktop screens.
-- Single-page application using only one `index.html` file.
-- Dynamic fetching of data from an external API (NewsAPI).
-- Loading indicator while data is being fetched.
-- Error handling when the API request fails or no results are found.
 - Users can search for different news topics (based on keywords).
+- when you click on search bar after the last search the old search title will be deleted. 
 
 ## Should-Have Features
 - Allow users to filter news articles by category (e.g., Sports, Technology, Politics).
+- Add keyup to the search button.
 
 ## Could-Have Features
 - Users can click on articles to view detailed news on a separate page.
