@@ -6,7 +6,7 @@ export const createNewsContainer = () => {
     return newsDiv;
 }
 
-export const createNewsItem = (article) => {
+export const createNewsItems = (article) => {
     const newsItem = document.createElement('div');
     newsItem.classList.add('news-item');
 

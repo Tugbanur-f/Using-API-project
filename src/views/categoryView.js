@@ -1,21 +1,15 @@
 export const createCategorySelector = () => {
-    const container = document.createElement('div');
-    container.classList.add('category-container');
+    const select = document.createElement('select');
+    select.id = 'categorySelector';
+    select.classList.add('category-selector');
 
-    const categories = [
-        { value: 'sports', text: 'Sports' },
-        { value: 'technology', text: 'Technology' },
-        { value: 'politics', text: 'Politics' },
-        { value: 'magazine', text: 'Magazine' }
-    ];
-
+    const categories = ['general', 'business', 'entertainment', 'health', 'science', 'sports', 'technology'];
     categories.forEach(category => {
-        const button = document.createElement('button');
-        button.classList.add('category-button');
-        button.dataset.category = category.value;
-        button.textContent = category.text;
-        container.appendChild(button);
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category[0].toUpperCase() + category.slice(1);
+        select.appendChild(option);
     });
 
-    return container;
+    return select;
 };
