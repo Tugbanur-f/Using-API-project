@@ -1,3 +1,4 @@
+
 export const createSearchBar = (onSearch) => {
     const searchDiv = document.createElement('div');
     searchDiv.classList.add('search-bar');
