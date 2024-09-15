@@ -8,31 +8,54 @@ import { createErrorContainer } from '../views/errorView.js';
 import { createLoadingIndicator } from '../views/loadingView.js';
 import { createCategorySelector } from '../views/categoryView.js';
 
+const CACHE_KEY = 'url-cache';
+
+export async function fetchCached(url) {
+  const cacheJSON = localStorage.getItem(CACHE_KEY);
+  const cache = cacheJSON ? JSON.parse(cacheJSON) : {};
+
+  let data = cache[url];
+  if (data) {
+    console.log('Cache hit', url);
+    return data;
+  }
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  data = await response.json();
+  cache[url] = data;
+  localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+
+  return data;
+}
+
+
 const fetchNews = async (q = '', category = 'general') => {
     let url = `${BASE_URL}/top-headlines?country=us&apiKey=${API_KEY}&category=${category}`;
     if (q) {
       url += `&q=${q}`;
     }
-    
+   
     const loadingIndicator = document.getElementById('loading');
     const errorContainer = document.getElementById('error');
     const newsContainer = document.getElementById('newsContainer');
    
+    
+  if (q || category !== 'general') {
     loadingIndicator.style.display = 'block';
+  } 
     errorContainer.innerHTML = '';
     newsContainer.innerHTML = ''; 
 
     await new Promise(resolve => setTimeout(resolve, 1500));
     
     try {
-       const response = await fetch(url);
-       if(!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-       
-       const data = await response.json();
+       const data = await fetchCached(url);
+       console.log('API Response:', data);
 
-      
        const filteredArticles = data.articles.filter(article => !article.title.toLowerCase().includes('removed'));
 
        if (filteredArticles.length === 0) {
@@ -46,7 +69,7 @@ const fetchNews = async (q = '', category = 'general') => {
     } catch (error) {
         errorContainer.innerText = `Failed to fetch news: ${error.message}`;
     } finally {
-        loadingIndicator.style.display = 'none';
+            loadingIndicator.style.display = 'none';    
     }
 };
 
@@ -57,11 +80,11 @@ const setupEventListeners = (searchBar, categorySelector) => {
 
     button.addEventListener('click', () => {
         const query = input.value.trim();
-        const category = categorySelector.value;
+        categorySelector.value = 'general';
 
         newsContainer.innerHTML = '';
 
-        fetchNews(query,category);
+        fetchNews(query);
 
         input.value = '';
         input.focus();
@@ -90,6 +113,7 @@ export const createNewsPage = () => {
     const appDiv = document.getElementById('app');
     appDiv.innerHTML = '';
 
+   
     const searchBar = createSearchBar();
     const categorySelector = createCategorySelector();
     const loadingIndicator = createLoadingIndicator();
@@ -103,7 +127,8 @@ export const createNewsPage = () => {
     appDiv.appendChild(newsContainer);
 
     setupEventListeners(searchBar, categorySelector);
+
+    fetchNews();
     
-    fetchNews(); 
 };
 

@@ -108,6 +108,19 @@ h1 {
     margin: 0 15px 20px;
 }
 
+.news-item a {
+    color: #ffffff; 
+    text-decoration: none;
+    margin-left: 15px; 
+    position: relative;
+    font-size: 14px; 
+    transition: color 0.3s ease; 
+}
+.news-item a:hover {
+    color: #f44336; 
+    text-decoration: underline;
+}
+
 .loading, .error {
     text-align: center;
     margin: 20px 0;
