@@ -1,3 +1,5 @@
-import { createNewsPage } from './pages/newsPage.js';
+import { createNewsPage } from "./pages/newsPage.js";
 
-window.addEventListener('load',  createNewsPage);
+window.addEventListener("load", () => {
+  createNewsPage();
+});
