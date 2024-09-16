@@ -12,7 +12,7 @@ export const createNewsItems = (article) => {
   const image = document.createElement("img");
   image.src = article.urlToImage
     ? article.urlToImage
-    : "path/to/default-placeholder.jpg";
+    : "src/img/default-placeholder.jpg";
   image.alt = article.title || "News Image";
   image.classList.add("news-image");
 
