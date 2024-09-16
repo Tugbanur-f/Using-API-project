@@ -17,7 +17,3 @@ This is a responsive, single-page web application that allows users to search fo
 - Add keyup to the search button.
 - Add focus to input
 - Keep the latest news on the main page.
-
-## Could-Have Features
-
-- Users can click on articles to view detailed news on a separate page.
