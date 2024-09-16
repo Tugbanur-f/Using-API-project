@@ -12,9 +12,7 @@ export const fetchNews = async (q = "", category = "general") => {
   const newsContainer = document.getElementById("newsContainer");
   const input = document.getElementById("searchInput");
 
-  if (q || category !== "general") {
-    loadingIndicator.style.display = "block";
-  }
+  loadingIndicator.style.display = "block";
   errorContainer.innerHTML = "";
   newsContainer.innerHTML = "";
   input.value = "";

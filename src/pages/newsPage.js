@@ -10,12 +10,7 @@ export const createNewsPage = () => {
   const appDiv = document.getElementById("app");
   appDiv.innerHTML = "";
 
-  const onSearch = (query) => {
-    const category = categorySelector.value;
-    fetchNews(query, category);
-  };
-
-  const searchBar = createSearchBar(onSearch);
+  const searchBar = createSearchBar();
   const categorySelector = createCategorySelector();
   const loadingIndicator = createLoadingIndicator();
   const errorContainer = createErrorContainer();

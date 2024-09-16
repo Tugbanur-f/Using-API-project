@@ -5,22 +5,27 @@ export const setupEventListeners = (searchBar, categorySelector) => {
   const input = searchBar.querySelector("#searchInput");
   const newsContainer = document.getElementById("newsContainer");
 
-  button.addEventListener("click", () => {
+  const onSearch = () => {
     const query = input.value.trim();
-    category = categorySelector.value;
+    const category = categorySelector.value;
 
     newsContainer.innerHTML = "";
-
     fetchNews(query, category);
+  };
+
+  button.addEventListener("click", onSearch);
+
+  input.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+      onSearch();
+    }
   });
+  setTimeout(() => {
+    input.focus();
+  }, 0);
 
   categorySelector.addEventListener("change", () => {
-    const category = categorySelector.value;
-    const query = input.value.trim();
-    newsContainer.innerHTML = "";
-
-    fetchNews(query, category);
-
+    onSearch();
     input.value = "";
     input.focus();
   });
