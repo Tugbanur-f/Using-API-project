@@ -23,7 +23,7 @@ h1 {
 }
 
 .search-input {
-  flex: 1; /* All items grow and shrink equally */
+  flex: 1;
   padding: 15px;
   font-size: 18px;
   border: none;
@@ -100,7 +100,6 @@ h1 {
   color: #ffffff;
   text-decoration: none;
   margin-left: 15px;
-  position: relative;
   font-size: 14px;
   transition: color 0.3s ease;
 }
